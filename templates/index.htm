@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>KTM DETAIL</title>
+<style>
+    body, html {
+      height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+     {
+      box-sizing: border-box;
+    }
+    
+    .bg-img {
+      
+      background-image: url("https://homepages.cae.wisc.edu/~ece533/images/airplane.png");
+    
+      min-height:1380px;
+    
+     
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+    
+   
+    .container {
+      position: absolute;
+      right: 0;
+      margin: 20px;
+      max-width: 300px;
+      padding: 16px;
+      background-color: green;
+    }
+    
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #ba5b5b;
+    }
+    
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+    
+    /* Set a style for the submit button */
+    .btn {
+      background-color: #fa6520;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 10%;
+      opacity: 0.9;
+    }
+    
+    .btn:hover {
+      opacity: 80;
+    }
+</style>
+
+</head>
+
+<body>
+
+ <div class="login">
+	<h1 style="text-align:center">Will the client purchase ?</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+            <strong><label name="Age">Age: </label></strong>
+            <input type="number" id="quantity" name="quantity" min="1" width=1%>
+
+       <strong> <label name="Gender">Gender: </label></strong>
+        <select name="Gender">
+            <option value="1">Male</option>
+            <option value="2">Female</option> 
+        </select>
+      <strong> <label name="Occupation">Occupation: </label></strong>
+        <select name="Occupation">
+            <option value="0">Professional</option>
+            <option value="1">Self Employed</option>
+            <option value="1">Student</option>
+            <option value="1">Unemployed</option>
+        </select> 
+       <strong> <label name="Phone Type">Phone Type: </label></strong>
+        <select name="Phone Type">
+            <option value="0">Average</option>
+            <option value="1">High End</option>
+            <option value="0">Low End</option>
+        </select> 
+      <strong> <label name="Current Bike">Current Bike: </label></strong>
+        <select name="Current Bike">
+            <option value="0">125 to 180</option>
+            <option value="1">180 to 220</option>
+            <option value="0">220 and Above</option>
+            <option value="0">Below 125</option>
+            <option value="0">No Bike</option>
+            
+        </select> 
+       <strong> <label name="Relationship">Relationship: </label></strong>
+        <select name="Relationship">
+            <option value="0">Committed</option>
+            <option value="1">Complicated</option>
+            <option value="0">Married</option>
+            <option value="0">Single</option>
+        </select> 
+
+    	<!-- <input type="number" name="Age" placeholder="Age" required="required" />
+          <input type="text" name="Gender" placeholder="Gender" required="required" />
+		  <input type="text" name="Occupation" placeholder="Occupation" required="required" />
+		  <input type="text" name="Phone Type" placeholder="Phone Type" required="required" />
+		  <input type="text" name="Current Bike" placeholder="Current Bike" required="required" />
+		  <input type="text" name="Relationship" placeholder="Relationship" required="required" /> -->
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+ <h2 style="text-align:center"> {{ prediction_text }}</h2>
+
+ </div>
+
+
+</body>
+</html>
